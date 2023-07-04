@@ -12,13 +12,40 @@ public class Main {
         System.out.println(isPositive(0)); // false
         System.out.println(isPositive(-3)); // false
 
-        printString("abcd", 5); // abcdabcdabcdabcdabcd
-
+        printString("abc", 5); // abcdabcdabcdabcdabcd
+        System.out.println();
         int[] arr = createArray(5, 10);
         System.out.println(Arrays.toString(arr)); // [10, 10, 10, 10, 10]
 
         int[][] array = new int[4][4]; // [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, x], [0, 0, 0, 1]]
         int x = array[2][3];
+
+        int array1[] = new int[]{1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        changeNumbers(array1);
+        System.out.println(Arrays.toString(array1));
+
+        int [][] matrix = new int[4][4];
+//        fillDioArray(matrix);
+        for (int i =0; i<matrix.length; i++) {
+            for (int j=0; j<matrix[i].length; j++) {
+                System.out.print( matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int twoDm[][]= new int[7][5];
+        int i,j,k=1;
+
+        for(i=0;i<7;i++){
+            for(j=0;j<5;j++) {
+                twoDm[i][j]=k;
+                k++;}
+        }
+
+        for(i=0;i<7;i++){
+            for(j=0;j<5;j++) {
+                System.out.print(twoDm[i][j]+" ");
+                System.out.print("");}
+        }
     }
 
     /**
@@ -27,6 +54,10 @@ public class Main {
      */
     private static boolean isSumBetween10And20(int a, int b) {
         // проверить, что сумма a и b лежит между 10 и 20
+        if(10<=(a+b) && a+b <= 20 ) {
+            return  true;
+        }
+
         return false;
     }
 
@@ -37,8 +68,10 @@ public class Main {
 
     private static void printString(String source, int repeat) {
         // напечатать строку source repeat раз
+        for (int i = 0; i <= repeat; i++) {
+            System.out.print(source);
+        }
     }
-
     private static boolean isLeapYear(int year) {
         // проверить, является ли год високосным. если да - return true
         // год является високосным, если он делится на 4, но не делится на 100, но делится на 400
@@ -47,7 +80,25 @@ public class Main {
 
     private static int[] createArray(int len, int initialValue) {
         // должен вернуть массив длины len, каждое значение которого равно initialValue
-        return null;
+        int [] arr= new int [len];
+        for( int i= 0; i < len; i++){
+            arr[i]=initialValue;
+        }
+
+        return arr;
+    }
+    private static void changeNumbers(int[]  array){
+        for ( int i = 0; i< array.length; i++){
+            if (array[i]==1) array[i]=0;
+            else array[i] = 1;
+            }
+    }
+    private static void fillDioArray(int [][] array){
+        for (int i = 0; i < array[0].length; i++){
+            for(int j = 0; j < array[1].length; j++){
+                if (i==j || i == array[1].length - 1 -j ) array[i][j] = 1;
+            }
+        }
     }
 
 /**
